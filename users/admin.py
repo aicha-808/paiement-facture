@@ -1,24 +1,23 @@
 from django.contrib import admin
-
-# Register your models here.
-from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import CustomUser
 
-@admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('name', 'phone_number', 'is_staff', 'is_active')
-    search_fields = ('name', 'phone_number')
-    ordering = ('phone_number',)
+    list_display = ['phone_number', 'name', 'role', 'is_staff', 'is_active']
+    list_filter = ['is_staff', 'is_superuser', 'is_active', 'role']
     fieldsets = (
-        (None, {'fields': ('name', 'phone_number', 'password')}),
+        (None, {'fields': ('phone_number', 'name', 'password')}),
         ('Permissions', {'fields': ('is_staff', 'is_active', 'is_superuser', 'groups', 'user_permissions')}),
-        ('Important dates', {'fields': ('last_login',)}),
+        ('Informations personnelles', {'fields': ('role', 'date_joined')}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('name', 'phone_number', 'password1', 'password2', 'is_staff', 'is_active'),
-        }),
+            'fields': ('phone_number', 'name', 'password1', 'password2', 'is_staff', 'is_active', 'role')}
+        ),
     )
+    search_fields = ('phone_number', 'name')
+    ordering = ('phone_number',)
+
+admin.site.register(CustomUser, CustomUserAdmin)
