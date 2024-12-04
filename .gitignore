@@ -44,6 +44,7 @@ yarn-error.log      # Logs d'erreur yarn
 *.iml               # Fichiers de projet IntelliJ IDEA
 
 # Environnement de développement
-*.env               # Fichiers de configuration d'environnement (env files)
+.env               # Fichiers de configuration d'environnement (env files)
 *.env.*             # Fichiers de configuration d'environnement (env files)
 .env.local          # Fichiers de configuration locaux
+
