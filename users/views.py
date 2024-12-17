@@ -13,6 +13,7 @@ from django.core.exceptions import ValidationError
 from rest_framework.permissions import BasePermission, IsAdminUser, AllowAny, IsAuthenticated
 from .utils import send_sms_with_token 
 from django.utils.timezone import now
+from rest_framework.views import APIView
 
 
 User = get_user_model()
@@ -227,31 +228,10 @@ def update_user(request, id):
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# def update_user(request, user_id):
-#     """
-#     Met à jour les informations d'un utilisateur en fonction de son ID.
-#     """
-#     try:
-#         user = CustomUser.objects.get(id=user_id)
-#         data = request.data
-
-#         # Mise à jour des informations
-#         user.name = data.get('name', user.name)
-#         user.phone_number = data.get('phone_number', user.phone_number)
-#         user.role = data.get('role', user.role)
-#         if data.get('password'):
-#             user.set_password(data['password'])
-
-#         user.save()
-
-#         return Response({
-#             "message": "Utilisateur mis à jour avec succès.",
-#             "user": {
-#                 "id": user.id,
-#                 "name": user.name,
-#                 "phone_number": user.phone_number,
-#                 "role": user.role
-#             }
-#         }, status=status.HTTP_200_OK)
-#     except CustomUser.DoesNotExist:
-#         return Response({"error": "Utilisateur introuvable."}, status=status.HTTP_404_NOT_FOUND)
+class CustomUserListView(APIView):
+    def get(self, request):
+        # Récupérer tous les utilisateurs CustomUser
+        users = CustomUser.objects.all()
+        # Sérialiser les utilisateurs avec le CustomUserSerializer
+        serializer = CustomUserSerializer(users, many=True)
+        return Response(serializer.data)

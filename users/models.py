@@ -56,7 +56,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     # Définition des rôles
     ROLE_CHOICES = (
         ('admin', 'Admin'),
-        ('member', 'Membre'),
+        ('membre', 'Membre'),
     )
 
     # Expression régulière pour le numéro de téléphone
