@@ -31,8 +31,8 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'https://paiement-facture-backend.onrender.com']
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(" ")
 # Application definition
 
 INSTALLED_APPS = [
