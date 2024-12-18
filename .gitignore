@@ -51,3 +51,5 @@ yarn-error.log      # Logs d'erreur yarn
 # Ignorer les environnements virtuels
 eau/
 
+.env
+
