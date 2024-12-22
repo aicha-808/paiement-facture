@@ -157,7 +157,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Adresse du frontend React
-    "http://localhost:3001"
+    "http://localhost:3000",  # Adresse du frontend React en développement
+    "http://localhost:3001",  # Si vous avez un autre environnement local
+    "https://paiement-facture-eau.vercel.app"  # Adresse du frontend en production
 ]
+
 # 
