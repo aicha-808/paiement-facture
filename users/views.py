@@ -32,6 +32,7 @@ class IsAdminRole(BasePermission):
     def has_permission(self, request, view):
         return request.user.is_authenticated and request.user.role == 'admin'
 
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([IsAdminRole])  # Utilisation de la permission personnalisée
 def register_user(request):
@@ -116,6 +117,7 @@ def login(request):
     return JsonResponse({'error': 'Seules les requêtes POST sont acceptées.'}, status=405)
 
 # view pour la deconnexion
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])  # L'utilisateur doit être authentifié
 def logout_view(request):
@@ -132,6 +134,7 @@ def logout_view(request):
         return JsonResponse({'error': 'Une erreur est survenue lors de la déconnexion.'}, status=400)
 
 # Vue pour la demande de réinitialisation du mot de passe
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])  # Permet à tous les utilisateurs d'accéder
 def request_password_reset(request):
@@ -157,6 +160,7 @@ def request_password_reset(request):
         return Response({"error": f"Une erreur est survenue lors de l'envoi du SMS : {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 # view pour renitialiser le mot de passe
+@csrf_exempt
 @api_view(['POST'])
 def reset_password(request):
     reset_token = request.data.get('reset_token')
