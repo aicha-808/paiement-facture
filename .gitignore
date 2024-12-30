@@ -1,0 +1,55 @@
+# .gitignore
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+db.sqlite3          # Base de données SQLite, à ignorer si vous ne voulez pas la versionner
+*.sqlite3           # Base de données SQLite
+*.log               # Fichiers de log
+*.pot               # Fichiers de traduction
+*.pyc               # Fichiers python compilés
+*.pyo
+*.pyd
+venv/               # Environnement virtuel Python
+
+# Django
+*.db
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+media/              # Dossier des fichiers médias générés (images, documents, etc.)
+static/             # Si vous utilisez des fichiers statiques générés par Django
+*.bak               # Sauvegardes générées automatiquement
+*.swp               # Fichiers swap de l'éditeur
+*.swo
+*.DS_Store          # Fichiers système MacOS
+
+# Front-end (React/TypeScript)
+node_modules/       # Dossier des dépendances Node.js
+build/              # Dossier des fichiers compilés (output du build React)
+dist/               # Dossier de distribution
+npm-debug.log       # Logs d'erreur npm
+yarn-error.log      # Logs d'erreur yarn
+*.tsbuildinfo       # Fichiers de build TypeScript
+*.lock              # Fichiers lock pour npm (npm-lock.json ou yarn.lock)
+
+# IDE et outils de développement
+.idea/              # Répertoire de l'IDE JetBrains (PyCharm, WebStorm, etc.)
+.vscode/            # Répertoire de l'IDE VSCode
+*.iml               # Fichiers de projet IntelliJ IDEA
+
+# Environnement de développement
+.env               # Fichiers de configuration d'environnement (env files)
+*.env.*             # Fichiers de configuration d'environnement (env files)
+.env.local          # Fichiers de configuration locaux
+
+# Ignorer les environnements virtuels
+eau/
+
+.env
+
