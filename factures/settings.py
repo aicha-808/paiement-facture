@@ -34,6 +34,10 @@ DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 # ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(" ")
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'paiement-facture-backend.onrender.com']
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+SESSION_COOKIE_SECURE = True  # Les cookies de session seront envoyés uniquement via HTTPS
+CSRF_COOKIE_SECURE = True     # Le cookie CSRF sera envoyé uniquement via HTTPS
 
 # Application definition
 
