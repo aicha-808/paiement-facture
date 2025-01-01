@@ -158,7 +158,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_ROOT = 'C:/Users/DELL/Documents/projet personnel/Diyan/Backend/staticfiles'
+# STATIC_ROOT = 'C:/Users/DELL/Documents/projet personnel/Diyan/Backend/staticfiles'
+
+STATIC_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'staticfiles')
+
 # STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
