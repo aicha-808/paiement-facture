@@ -15,13 +15,12 @@ class UserManager(BaseUserManager):
             raise ValueError("Le numéro de téléphone doit être défini")
         if not self.validate_password(password):  # Validation du mot de passe
             raise ValidationError(
-                "Le mot de passe doit contenir : une majuscule, une minuscule, 5 chiffres et un caractère spécial. "
-                "Il doit comporter exactement 8 caractères sans espaces ni virgules."
+                "Le mot de passe doit contenir : Au moins une majuscule,Au moins une minuscule,Au moins un chiffre,Au moins un caractère spécial,Longueur minimale de 8 caractères. "
             )
         # Définir le rôle par défaut si non fourni
-        role = extra_fields.pop('role', 'member')
+        role = extra_fields.pop('role', 'membre')
         if role not in dict(self.model.ROLE_CHOICES):
-            raise ValueError("Le rôle doit être 'admin' ou 'member'.")
+            raise ValueError("Le rôle doit être 'admin' ou 'membre'.")
 
         extra_fields.setdefault('is_active', True)
         user = self.model(name=name, phone_number=phone_number, role=role, **extra_fields)
@@ -47,7 +46,7 @@ class UserManager(BaseUserManager):
         """Valide le mot de passe selon les critères définis."""
         if not password:
             return False
-        regex = r'^[A-Z][a-z]\d{5}[!@#$%^&*()_+\-=\[\]{};\'":\\|,.<>\/?]+$'
+        regex = r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};\'":\\|,.<>\/?]).{8,}$'
         return bool(re.match(regex, password))
 
 
