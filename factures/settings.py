@@ -75,12 +75,11 @@ SIMPLE_JWT = {
 }
 
 AUTH_USER_MODEL = 'users.CustomUser'
-  # Backend par défaut pour les super utilisateurs
-# AUTHENTICATION_BACKENDS = [
-#     'users.authentication.PhoneNumberAuthBackend',
-#     'django.contrib.auth.backends.ModelBackend',
-# ]
-
+# Backend par défaut pour les super utilisateurs
+AUTHENTICATION_BACKENDS = [
+    # 'users.authentication.PhoneNumberAuthBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
